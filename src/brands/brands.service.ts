@@ -1,7 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
-import { CreateBrandDto } from './dto/create-brand.dto';
-import { UpdateBrandDto } from './dto/update-brand.dto';
+import { CreateBrandDto, UpdateBrandDto } from './dto';
 import { Brand } from './entities/brand.entity';
 
 @Injectable()
@@ -49,5 +48,9 @@ export class BrandsService {
 
   remove(id: string) {
     this.brands = this.brands.filter((brand) => brand.id !== id);
+  }
+
+  fillBrandsWithSeedData(brands: Brand[]) {
+    this.brands = brands;
   }
 }
